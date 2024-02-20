@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Video</title>
+    <style>
+        /* Stili CSS presi dal tuo esempio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+        }
+
+        #search-bar {
+            text-align: center;
+        }
+
+        #search-bar input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 20rem;
+        }
+
+        #search-bar button {
+            padding: 8px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #video-list {
+            display: flex;
+            justify-content: center;
+            max-width: 1240px;
+            margin: 2rem auto;
+        }
+
+        #video-list h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: 35rem 35rem;
+            gap: 20px;
+        }
+
+        .video {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 0.8em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Stile per il pulsante "Aggiungi Nuovo Video" */
+        .add-video-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* Stile per il pulsante "Aggiungi Nuovo Video" al passaggio del mouse */
+        .add-video-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div id="header-container">
+        <h1>Web TV</h1>
+        <div id="search-bar">
+            <!-- Ho mantenuto la form per la ricerca -->
+              <form action="/staffVideo/dettaglio" method="get" class="search-bar">
+            <input type="text" name="titolo" placeholder="Inserisci la parola chiave">
+            <button type="submit">Cerca</button>
+        </form>
+            </form>
+        </div>
+    </div>
+</header>
+<main>
+    <!-- Aggiunto il pulsante "Aggiungi Nuovo Video" sopra la tabella -->
+    <a href="/staffVideo/nuovo" class="add-video-button">Aggiungi Nuovo Video</a>
+    <section id="video-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Titolo</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ho aggiunto Thymeleaf foreach per iterare i video -->
+                <tr th:each="video : ${videos}">
+                    <td th:text="${video.titolo}"></td>
+                    <td><a th:href="@{/staffVideo/elimina/{idVideo}(idVideo=${video.idVideo})}">Elimina</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Streaming App. Tutti i diritti riservati.</p>
+</footer>
+</body>
+</html>

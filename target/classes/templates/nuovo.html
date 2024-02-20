@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuovo Video</title>
+    <style>
+        /* Stili CSS presi dal tuo esempio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 20px; /* Aggiunto padding per separare il form dal bordo della pagina */
+        }
+
+        h1 {
+            text-align: center; /* Centrato il titolo del form */
+        }
+
+        form {
+            max-width: 500px; /* Limitato la larghezza del form */
+            margin: 0 auto; /* Centrato il form */
+            background-color: #fff; /* Colore sfondo del form */
+            padding: 20px; /* Aggiunto padding per separare i campi del form */
+            border-radius: 5px; /* Bordo arrotondato */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra */
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="checkbox"],
+        form input[type="submit"] {
+            display: block; /* Rendere gli input su righe separate */
+            margin-bottom: 10px; /* Spaziatura tra i campi */
+            width: 100%; /* Occupare l'intera larghezza disponibile */
+            padding: 8px; /* Padding uniforme */
+            border: 1px solid #ccc; /* Bordo sottile */
+            border-radius: 4px; /* Bordo arrotondato */
+            box-sizing: border-box; /* Garantire che il padding non aumenti le dimensioni dell'elemento */
+        }
+
+        form input[type="checkbox"] {
+            width: auto; /* Larghezza automatica per la casella di controllo */
+        }
+
+        form input[type="submit"] {
+            background-color: #333; /* Colore sfondo pulsante */
+            color: #fff; /* Colore testo pulsante */
+            border: none; /* Rimuovere il bordo */
+            cursor: pointer; /* Cambiare il cursore al passaggio del mouse */
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #555; /* Cambiare il colore di sfondo al passaggio del mouse */
+        }
+    </style>
+</head>
+<body>
+    <h1>Nuovo Video</h1>
+    <form th:action="@{/staffVideo/nuovo}" th:object="${video}" method="post">
+        Titolo: <input type="text" th:field="*{titolo}" required><br>
+        URL: <input type="text" th:field="*{url}" required><br>
+        Categoria: <input type="text" th:field="*{categoria}" required><br>
+        Tag: <input type="text" th:field="*{tag}" required><br>
+        Minutaggio Totale: <input type="number" th:field="*{minutaggioTotaleVideo}" required><br>
+        Approvazione: <input type="checkbox" th:field="*{approvazione}"><br>
+        <input type="submit" value="Aggiungi Video">
+    </form>
+</body>
+</html>

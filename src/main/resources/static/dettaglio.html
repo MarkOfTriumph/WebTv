@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Video</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Web TV - Dettaglio Video</h1>
+    <!-- Rimani fedele al form di ricerca nella navbar -->
+    <form action="/dettaglio" method="get" class="search-bar">
+        <input type="text" name="titolo" placeholder="Inserisci il titolo del video">
+        <button type="submit">Cerca</button>
+    </form>
+</header>
+<main>
+    <section id="video-list">
+        <div class="video-container">
+            <!-- Loop per visualizzare solo i video filtrati -->
+            <div th:each="video : ${videos}" class="video">
+                <h3 th:text="${video.titolo}">Titolo del Video</h3>
+                <video controls>
+                    <source th:src="@{'/' + ${video.url}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <!-- Fine dell'elenco dei video filtrati -->
+        </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Streaming App. Tutti i diritti riservati.</p>
+</footer>
+</body>
+</html>

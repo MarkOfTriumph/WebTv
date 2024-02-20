@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-container {
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            background-color: #ffebee;
+            color: #ff0000;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff0000;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <h1>Errore</h1>
+    <p>Si è verificato un problema durante il caricamento dei video.</p>
+    <p>Riprova più tardi o contatta l'amministratore del sito.</p>
+</div>
+<div>
+    <h1 th:text = "${errore}">
+    </h1>
+</div>
+</body>
+</html>
+
